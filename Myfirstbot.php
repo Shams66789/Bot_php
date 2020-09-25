@@ -17,6 +17,8 @@ $username = $update["message"]["from"]["username"];
 $message = $update["message"]["text"];
 $message_id = $update["message"]["message_id"];
 
+$username = urlencode($username);
+
 $info = "<b>Chat Id : </b><code>$chatId</code>%0A<b>First Name : </b><code>$firstname</code><b>Username : </b><code>$username</code><b>User Id: </b><code>$userId</code>";
 
 
