@@ -22,51 +22,55 @@ $r_msg_id = $update["message"]["reply_to_message"]["message_id"];
 
 if($r_userId ===null)
 {
-   $info2 ="<b>ID : </b>$userId\n<b>First Name: </b>$firstname\n<b>Username : </b>@$username";
-   $info = urlencode($info2);
+   $info2 ="<b>ID : </b>$userId\n<b>First Name: </b>$firstname\n<b>Username : </b>@$username";   
 }
 else{
    $info2 ="<b>ID : </b>$r_userId\n<b>First Name: </b>$r_firstname\n<b>Username : </b>@$r_username";
-   $info = urlencode($info2);;
 }
 
+$info = urlencode($info2);
+
 $cmds11 = "<b>Hey, welcome to this Bot!%0ACommands List:<b>To know the info</b><code>$info</code>";
+
+$message_text = "";
 
 switch($message) {
 
       
 
        case "/start":
-
-               sendMessage($chatId, "Hey Type  /cmds for a list of all commands!");
+               $message_text = "Hey Type  /cmds for a list of all commands!";
+               
 
                break;
 
        case "/cmds":
 
-               sendMessage($chatId, $cmds11);
+               $message_text = $cmds11;
 
                break;
 
        case "/info":
 
-               sendMessage($chatId,$info);
+               $message_text = $info;
 
                break;
 
        case "/status":
 
-             sendMessage($chatId, "<b>I AM NOT DEAD </b>");
+             $message_text = "<b>I AM NOT DEAD </b>";
 
              break;
 
         case "/id":
 
-               sendMessage($chatId, "<b>CHAT ID : </b><code>$chatId</code>");
+               $message_text = "<b>CHAT ID : </b><code>$chatId</code>";
 
                break;
 
 }
+
+sendMessage($chatId, $message_text);
 
 function sendMessage ($chatId, $message) {
        
